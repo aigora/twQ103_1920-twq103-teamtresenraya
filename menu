@@ -1,1 +1,27 @@
-hh
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+	
+	int opcion;
+	char Jugador1[100], Jugador2[100];
+	
+	printf("Bienvenido al famoso juego del Tres en Raya.\n");
+	
+	printf("Elija una de estas dos opciones:\n");
+	printf("Pulse 1 para iniciar sesion.\n");
+	printf("Pulse 2 si quiere registrarse como nuevo usuario.\n");
+	printf("Pulse 3 en caso de necesitar ayuda.\n");
+	scanf("%d", &opcion);
+	
+	switch (opcion){
+		case 1:
+			printf("Iniciar sesion.\n");
+			printf("Introduzca nombre de usuario y contraseña.\n")
+			break;
+		case 2:
+			printf("Registrarse.\n")
+			
+	}
+	
+}

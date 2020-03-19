@@ -3,35 +3,58 @@
 
 int main(){
 	
-	int opcion, matricula;
+	int opcion, matricula1, matricula2;
 	char Jugador1[100], Jugador2[100], usuario[100];
 	
 	printf("Bienvenido al famoso juego del Tres en Raya.\n");
 	
+	printf("Jugador 1:\n");
 	printf("Elija una de estas dos opciones:\n");
 	printf("Pulse 1 para iniciar sesion.\n");
 	printf("Pulse 2 si quiere registrarse como nuevo usuario.\n");
-	printf("Pulse 3 en caso de necesitar ayuda.\n");
 	scanf("%d", &opcion);
 	
 	switch (opcion){
 		case 1:
 			printf("Iniciar sesion.\n");
-			printf("Introduzca nombre de usuario y contraseña.\n");
+			printf("Introduzca nombre del Jugador\n");
+			scanf("%c", &Jugador1[100]);
+			
 			break;
 		case 2:
 			printf("Registrarse.\n");
-			printf("Nombre de usuario:\n")
-			scanf("%c", &usuario);
-			
-		    printf("Numero de matricula(que sera su contraseña):\n");
-		    scanf("%d" &matricula);
+			printf("Introduzca nombre del Jugador\n");
+			scanf("%s", &Jugador1[100]);
+		
+			printf("Numero de matricula(que sera su contraseña):\n");
+		    scanf("%d", &matricula1);
 		    break;
 		
-			
-			
-			
-			
 	}
+	
+	printf("Jugador 2:\n");
+	printf("Elija una de estas dos opciones:\n");
+	printf("Pulse 1 para iniciar sesion.\n");
+	printf("Pulse 2 si quiere registrarse como nuevo usuario.\n");
+	scanf("%d", &opcion);
+	
+	switch (opcion){
+		case 1:
+			printf("Iniciar sesion.\n");
+			printf("Introduzca nombre del Jugador\n");
+			scanf("%s", &Jugador2[100]);
+			
+			break;
+		case 2:
+			printf("Registrarse.\n");
+			printf("Introduzca nombre del Jugador\n");
+			scanf("%c", &Jugador2[100]);
+		
+			printf("Numero de matricula(que sera su contraseña):\n");
+		    scanf("%d", &matricula2);
+		    break;
+		
+	}
+	
 	
 }

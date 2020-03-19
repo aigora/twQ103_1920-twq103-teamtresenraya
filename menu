@@ -3,8 +3,8 @@
 
 int main(){
 	
-	int opcion;
-	char Jugador1[100], Jugador2[100];
+	int opcion, matricula;
+	char Jugador1[100], Jugador2[100], usuario[100];
 	
 	printf("Bienvenido al famoso juego del Tres en Raya.\n");
 	
@@ -17,10 +17,20 @@ int main(){
 	switch (opcion){
 		case 1:
 			printf("Iniciar sesion.\n");
-			printf("Introduzca nombre de usuario y contraseña.\n")
+			printf("Introduzca nombre de usuario y contraseña.\n");
 			break;
 		case 2:
-			printf("Registrarse.\n")
+			printf("Registrarse.\n");
+			printf("Nombre de usuario:\n")
+			scanf("%c", &usuario);
+			
+		    printf("Numero de matricula(que sera su contraseña):\n");
+		    scanf("%d" &matricula);
+		    break;
+		
+			
+			
+			
 			
 	}
 	

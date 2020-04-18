@@ -1,9 +1,12 @@
+//Tenemos varias dudas que estamos intentando solucionar pero por ahora llevamos esto
 #include<stdio.h>
 #include<string.h>
 #include<math.h>
 
 struct jugadores{
-	char usuario[100];
+	char nombre;
+	char apellido;
+	char apellido2;
 	int matricula;
 };
 
@@ -12,14 +15,9 @@ int main(){
    FILE*pfichero;
    int i=0,contador=0, a, buscamatricula;
    char b;
+   int fmatricula;
+   char fusuario1, fusuario2, fusuario3;
 
-   pfichero=fopen("UsuariosTresEnRaya.txt","w");
-
-
-   if(pfichero==NULL){
-      printf("Ha sucedido un error, por favor vuelva a abrir el programa\n");
-      return 0;}
-    
    printf("Bienvenido al tres en raya\n");
 
    printf("Pulsa 1 si es nuevo usuario\n o pulse 2 si desea iniciar sesion\n");
@@ -36,35 +34,50 @@ int main(){
          printf("Ha sucedido un error, por favor vuelva a abrir el programa\n");
          return 0;}
          
-    do{printf("Introduzca el nombre de usuario\n");
+    do{printf("Introduzca la incial de su nombre\n");
        fflush(stdin);
-       gets(jugadores[i].usuario);
+       scanf("%c", &fusuario1);
+       printf("Introduzca la incial de su primer apellido\n");
+       fflush(stdin);
+       scanf("%c", &fusuario2);
+       printf("Introduzca la incial de su segundo apellido\n");
+       fflush(stdin);
+       scanf("%c", &fusuario3);
        printf("Introduzca su matricula\n");
-       scanf("%d", &jugadores[i].matricula);
+       fflush(stdin);
+       scanf("%d", &fmatricula);
+       fprintf(pfichero, "%c %c %c %d\n", fusuario1, fusuario2, fusuario3, fmatricula);
        
        printf("Desea registrar otro usuario, pulso s si lo desea y n si no\n");
        fflush(stdin);
        scanf("%c", &b);
+       
        i++;}
        
       
-	  }
+	  
       
       while(b=='s');
-      /*while(fscanf(pfichero, "%s %d", &jugadores[i].usuario, &jugadores[i].matricula)!=EOF){
-      	strcpy
-	  }*/
+      i=0;
+      while(fscanf(pfichero, "%s %s %s %d", &jugadores[i].nombre, &jugadores[i].apellido, &jugadores[i].apellido2, &jugadores[i].matricula)!=EOF){
+      	printf("%s %s %s %d", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2, jugadores[i].matricula);
+      	i++;
+	  }
+	  printf("%s", jugadores[1].nombre);
+	  printf("Que pasa Rachel");
+	  
 	  fclose(pfichero);
       break;
       
       case 2:
-      	printf("Hola de nuevo, introduzca su matricula y estarás listo para jugar");
+      	printf("Hola de nuevo jugadores, introducid vuestra matricula y estareis listo para jugar");
       	pfichero=fopen("UsuariosTresEnRaya.txt","r");
       	i=0;
-      	do{
-      		printf("Introduzca su numero de matricula");
+      	for(i=0; i<2; i++){
+      		printf("Jugador %d introduzca su matricula\n", i+1);
       		scanf("%d", &buscamatricula);
-      		while
+      		strcmp
+      	
       		
 		  }
       
@@ -74,27 +87,4 @@ int main(){
 
 
 
-fscanf(pfichero, "%s %d", &jugadores[i].usuario, &jugadores[i].matricula)
-/*do{
-   printf("Usuario %d: Introduzca la letra 'c' para crear un nuevo usuario o la letra 't' para iniciar sesio sn con uno ya existente\n", i+1);
-   fflush(stdin);
-   scanf("%c",&a);
-if(a== 't'){
-//goto inisesion;
-}
-  printf("Introduzca el nombre del usuario %d (no se admiten espacios)\n",i+1);
-  fflush(stdin);
-scanf("%c",&nombre);
-printf("Introduzca el numero de matricula del usuario %d:\n",i+1);
-fflush(stdin);
-scanf("%d",&matricula);
-fprintf(pfichero,"Usuario: %c \nMatricula: %d");
-printf("Para salir del menu de registro pulse s o cualquier otra letra para continuar con los registros:\n");
-fflush(stdin);
-scanf("%c", &b);
-if(b=='s'){
-	break;
-}
-i++;
-}while(a='c');
-fclose(pfichero);*/
+

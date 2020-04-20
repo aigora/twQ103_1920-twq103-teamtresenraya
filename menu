@@ -64,7 +64,7 @@ int main(){
       	i++;
 	  }
 	  printf("%s", jugadores[1].nombre);
-	  printf("Que pasa Rachel");
+	  
 	  
 	  fclose(pfichero);
       break;

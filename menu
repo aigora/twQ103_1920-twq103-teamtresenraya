@@ -1,83 +1,147 @@
 #include<stdio.h>
 #include<string.h>
-#include<math.h>
 
-struct jugadores{
-	char nombre;
-	char apellido;
-	char apellido2;
-	int matricula;
-};
+
+struct jugadores {
+	char nombre[50];
+	char apellido[50];
+	char apellido2[50];
+	char matricula[10]; };
 
 int main(){
    struct jugadores jugadores[200];
    FILE*pfichero;
-   int i=0,contador=0, a, buscamatricula;
-   char b;
-   int fmatricula;
-   char fusuario1, fusuario2, fusuario3;
-
-   printf("Bienvenido al tres en raya\n");
-
-   printf("Pulse 1 si es nuevo usuario\nPulse 2 si desea iniciar sesion\n");
-   scanf("%d", &a);
-
-   switch(a){
-
-      case 1:
-      printf("Bienvenido al juego, vamos a registrarle para poder disfrutar del juego\n");
-      pfichero=fopen("UsuariosTresEnRaya.txt","w");
-
-
-      if(pfichero==NULL){
+   int i=0,contador=1, njugadores;
+   char opcion;
+   char buscamatricula[10];
+   int jugador1, jugador2;
+  
+   
+   pfichero = fopen("UsuariosTresEnRaya.txt","r");
+   
+   if(pfichero==NULL){
          printf("Ha sucedido un error, por favor vuelva a abrir el programa\n");
          return 0;}
          
-    do{printf("Introduzca la incial de su nombre\n");
-       fflush(stdin);
-       scanf("%c", &fusuario1);
-       printf("Introduzca la incial de su primer apellido\n");
-       fflush(stdin);
-       scanf("%c", &fusuario2);
-       printf("Introduzca la incial de su segundo apellido\n");
-       fflush(stdin);
-       scanf("%c", &fusuario3);
-       printf("Introduzca su matricula\n");
-       fflush(stdin);
-       scanf("%d", &fmatricula);
-       fprintf(pfichero, "%c %c %c %d\n", fusuario1, fusuario2, fusuario3, fmatricula);
-       
-       printf("Desea registrar otro usuario, pulso s si lo desea y n si no\n");
-       fflush(stdin);
-       scanf("%c", &b);
-       
-       i++;}
-       
-      
-	  
-      
-      while(b=='s');
-      i=0;
-      while(fscanf(pfichero, "%s %s %s %d", &jugadores[i].nombre, &jugadores[i].apellido, &jugadores[i].apellido2, &jugadores[i].matricula)!=EOF){
-      	printf("%s %s %s %d", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2, jugadores[i].matricula);
-      	i++;
+    while(fscanf(pfichero, "%s %s %s %d", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, &jugadores[contador].matricula) != EOF){
+      	//printf("%s %s %s %d\n", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, jugadores[contador].matricula);
+      	contador++;
 	  }
-	  printf("%s", jugadores[1].nombre);
-	  
-	  fclose(pfichero);
-      break;
-      
-      case 2:
-      	printf("Hola de nuevo jugadores, introducid vuestra matricula y estareis listo para jugar");
-      	pfichero=fopen("UsuariosTresEnRaya.txt","r");
-      	i=0;
-      	for(i=0; i<2; i++){
-      		printf("Jugador %d introduzca su matricula\n", i+1);
-      		scanf("%d", &buscamatricula);
-      		//strcmp
-      	
-      		
-		  }
-      
-}
+	
+	contador=njugadores;
+    fclose(pfichero);
+	 
+    printf("BIENVENIDOS AL FAMOSO JUEGO DEL TRES EN RAYA\n\n");
+    
+    do {
+    	fflush(stdin);
+    	printf("Si quiere iniciar sesion pulse A\n");
+    	printf("Si quiere registrarse pulse B\n");
+    	printf("S quiere salir del juego pulse C\n");
+    	scanf("%c", &opcion);
+    	
+    	if( opcion == 'A'|| opcion == 'a') {
+    		printf("Bienvenido de nuevo, identifiquese para iniciar sesion Jugador 1\n");
+    		printf("Introduzca su numero de matricula\n");
+    		fflush(stdin);
+    		scanf("%d", &buscamatricula);
+    	//NO NOS ENTRAAAAA	
+    		for(i=1; i<njugadores; i++){
+    			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
+    				printf("Bienvenido\n %s %s %s Usted es el Jugador 1\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
+    				i=jugador1;
+				}
+			}
+		}
+		
+		else if( opcion == 'B' || opcion == 'b'){
+			pfichero=fopen("UsuariosTresEnRaya.txt", "a");
+			printf("Bienvenido al tres en raya, para poder jugar registrate\nSeras el jugador 1\n");
+			printf("Introduzca su nombre\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].nombre);
+			fprintf(pfichero, "\n%s ", jugadores[njugadores+1].nombre);
+			printf("Introduzca su primer apellido\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].apellido);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].apellido);
+			printf("Introduzca su segundo apellido\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].apellido2);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].apellido2);
+			printf("Introduzca su numero de matricula\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].matricula);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].matricula);
+			njugadores=njugadores+1;
+			jugador1=njugadores;
+			printf("¿Preparado para jugar? Buena suerte %s %s %s\n",jugadores[jugador1].nombre, jugadores[jugador1].apellido, jugadores[jugador1].apellido2);
+		}
+		
+		else if ( opcion == 'C' || opcion == 'c'){
+			printf("¡Nos vemos pronto!\n");
+			return 0;
+			}
+			
+			
+			
+		
+	}while( opcion != 'A' && opcion != 'a' && opcion != 'B' && opcion != 'b' && opcion != 'C' && opcion != 'c');
+	
+    printf("Continuamos con el Jugador 2\n");
+    
+     do {
+    	fflush(stdin);
+    	printf("Si quiere iniciar sesion pulse A\n");
+    	printf("Si quiere registrarse pulse B\n");
+    	printf("S quiere salir del juego pulse C\n");
+    	scanf("%c", &opcion);
+    	
+    	if( opcion == 'A'|| opcion == 'a') {
+    		printf("Bienvenido de nuevo, identifiquese para iniciar sesion Jugador 2\n");
+    		printf("Introduzca su numero de matricula\n");
+    		fflush(stdin);
+    		scanf("%d", &buscamatricula);
+    		
+    		for(i=1; i<njugadores; i++){
+    			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
+    				printf("Bienvenido\n %s %s %s Usted es el Jugador 2\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
+    				i=jugador2;
+				}
+			}
+		}
+		
+		else if( opcion == 'B' || opcion == 'b'){
+			pfichero=fopen("UsuariosTresEnRaya.txt", "a");
+			printf("Bienvenido al tres en raya, para poder jugar registrate\nSeras el jugador 2\n");
+			printf("Introduzca su nombre\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].nombre);
+			fprintf(pfichero, "\n%s ", jugadores[njugadores+1].nombre);
+			printf("Introduzca su primer apellido\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].apellido);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].apellido);
+			printf("Introduzca su segundo apellido\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].apellido2);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].apellido2);
+			printf("Introduzca su numero de matricula\n");
+			fflush(stdin);
+			scanf("%s", &jugadores[njugadores+1].matricula);
+			fprintf(pfichero, "%s ", jugadores[njugadores+1].matricula);
+			njugadores=njugadores+1;
+			jugador2=njugadores;
+			printf("¿Preparado para jugar? Buena suerte %s %s %s",jugadores[jugador2].nombre, jugadores[jugador2].apellido, jugadores[jugador2].apellido2);
+		}
+		
+		else if ( opcion == 'C' || opcion == 'c'){
+			printf("¡Nos vemos pronto!\n");
+			return 0;
+			}
+			
+			
+			
+		
+	}while( opcion != 'A' && opcion != 'a' && opcion != 'B' && opcion != 'b' && opcion != 'C' && opcion != 'c');
 }

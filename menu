@@ -24,6 +24,7 @@ int main(){
          return 0;}
          
     while(fscanf(pfichero, "%s %s %s %d", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, &jugadores[contador].matricula) != EOF){
+      	//printf("%s %s %s %d\n", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, jugadores[contador].matricula);
       	contador++;
       	njugadores++;
 	  }
@@ -36,7 +37,7 @@ int main(){
     	fflush(stdin);
     	printf("Si quiere iniciar sesion pulse A\n");
     	printf("Si quiere registrarse pulse B\n");
-    	printf("Si quiere salir del juego pulse C\n");
+    	printf("S quiere salir del juego pulse C\n");
     	scanf("%c", &opcion);
     	
     	if( opcion == 'A'|| opcion == 'a') {
@@ -44,10 +45,10 @@ int main(){
     		printf("Introduzca su numero de matricula\n");
     		fflush(stdin);
     		scanf("%d", &buscamatricula);
-    		
+    	
     		for(i=1; i<=njugadores; i++){
     			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
-    				printf("Bienvenido\n %s %s %s Usted es el Jugador 1\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
+    				printf("Bienvenido %s %s %s.\nUsted es el Jugador 1\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
     				i=jugador1;
     				break;
 				}
@@ -72,14 +73,14 @@ int main(){
 			printf("Introduzca su numero de matricula\n");
 			fflush(stdin);
 			scanf("%s", &jugadores[njugadores+1].matricula);
-			fprintf(pfichero, "%s ", jugadores[njugadores+1].matricula);
+			fprintf(pfichero, "%s", jugadores[njugadores+1].matricula);
 			njugadores=njugadores+1;
 			jugador1=njugadores;
-			printf("¿Preparado para jugar? Buena suerte %s %s %s\n",jugadores[jugador1].nombre, jugadores[jugador1].apellido, jugadores[jugador1].apellido2);
+			printf("øPreparado para jugar? Buena suerte %s %s %s\n",jugadores[jugador1].nombre, jugadores[jugador1].apellido, jugadores[jugador1].apellido2);
 		}
 		
 		else if ( opcion == 'C' || opcion == 'c'){
-			printf("¡Nos vemos pronto!\n");
+			printf("°Nos vemos pronto!\n");
 			return 0;
 			}
 			
@@ -105,7 +106,7 @@ int main(){
     		
     		for(i=1; i<=njugadores; i++){
     			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
-    				printf("Bienvenido\n %s %s %s Usted es el Jugador 2\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
+    				printf("Bienvenido %s %s %s.\nUsted es el Jugador 2\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
     				i=jugador2;
     				break;
 				}
@@ -130,14 +131,14 @@ int main(){
 			printf("Introduzca su numero de matricula\n");
 			fflush(stdin);
 			scanf("%s", &jugadores[njugadores+1].matricula);
-			fprintf(pfichero, "%s ", jugadores[njugadores+1].matricula);
+			fprintf(pfichero, "%s", jugadores[njugadores+1].matricula);
 			njugadores=njugadores+1;
 			jugador2=njugadores;
-			printf("¿Preparado para jugar? Buena suerte %s %s %s",jugadores[jugador2].nombre, jugadores[jugador2].apellido, jugadores[jugador2].apellido2);
+			printf("øPreparado para jugar? Buena suerte %s %s %s",jugadores[jugador2].nombre, jugadores[jugador2].apellido, jugadores[jugador2].apellido2);
 		}
 		
 		else if ( opcion == 'C' || opcion == 'c'){
-			printf("¡Nos vemos pronto!\n");
+			printf("°Nos vemos pronto!\n");
 			return 0;
 			}
 			

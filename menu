@@ -24,11 +24,10 @@ int main(){
          return 0;}
          
     while(fscanf(pfichero, "%s %s %s %d", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, &jugadores[contador].matricula) != EOF){
-      	//printf("%s %s %s %d\n", jugadores[contador].nombre, jugadores[contador].apellido, jugadores[contador].apellido2, jugadores[contador].matricula);
       	contador++;
+      	njugadores++;
 	  }
 	
-	contador=njugadores;
     fclose(pfichero);
 	 
     printf("BIENVENIDOS AL FAMOSO JUEGO DEL TRES EN RAYA\n\n");
@@ -37,7 +36,7 @@ int main(){
     	fflush(stdin);
     	printf("Si quiere iniciar sesion pulse A\n");
     	printf("Si quiere registrarse pulse B\n");
-    	printf("S quiere salir del juego pulse C\n");
+    	printf("Si quiere salir del juego pulse C\n");
     	scanf("%c", &opcion);
     	
     	if( opcion == 'A'|| opcion == 'a') {
@@ -45,11 +44,12 @@ int main(){
     		printf("Introduzca su numero de matricula\n");
     		fflush(stdin);
     		scanf("%d", &buscamatricula);
-    	//NO NOS ENTRAAAAA	
-    		for(i=1; i<njugadores; i++){
+    		
+    		for(i=1; i<=njugadores; i++){
     			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
     				printf("Bienvenido\n %s %s %s Usted es el Jugador 1\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
     				i=jugador1;
+    				break;
 				}
 			}
 		}
@@ -103,10 +103,11 @@ int main(){
     		fflush(stdin);
     		scanf("%d", &buscamatricula);
     		
-    		for(i=1; i<njugadores; i++){
+    		for(i=1; i<=njugadores; i++){
     			if(strcmp(jugadores[i].matricula, buscamatricula) == 0){
     				printf("Bienvenido\n %s %s %s Usted es el Jugador 2\n", jugadores[i].nombre, jugadores[i].apellido, jugadores[i].apellido2);
     				i=jugador2;
+    				break;
 				}
 			}
 		}
